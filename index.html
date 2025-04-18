@@ -207,7 +207,7 @@
   <div class="container" id="page1">
     <div class="glow-text">Oii unaku onu solava💌</div>
     <input id="password" class="input-box" type="password" placeholder="Enter code" />
-    <div style="margin: 10px;">Hint:one special day 🥳</div>
+    <div style="margin: 10px;">Hint:one special day or special word 🥳</div>
     <button class="btn" onclick="unlockSurprise()">Unlock Surprise</button>
     <div id="error" style="margin-top:10px; color: yellow;"></div>
     <div id="clockCountdown"></div>
@@ -277,7 +277,7 @@
   <script>
     function unlockSurprise() {
       const pwd = document.getElementById('password').value;
-      if (['August 24', 'November 16', 'April 19'].includes(pwd)) {
+      if (['August 24','Jesi@19','prasanth@16', 'jesiprasanth','iloveyou','mama','November 16', 'April 19'].includes(pwd)) {
         document.getElementById('page1').classList.add('hidden');
         document.getElementById('page2').classList.remove('hidden');
       } else {
