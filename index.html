@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jesi's Birthday Surprise</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    .glow-text {
+      font-size: 2em;
+      text-shadow: 0 0 10px #ff0080, 0 0 20px #ff0080;
+      margin-bottom: 20px;
+    }
+    .input-box, .btn {
+      padding: 10px; font-size: 1em; border-radius: 10px; border: none;
+    }
+    .input-box {
+      margin-bottom: 10px;
+    }
+    .btn {
+      background: #ff0080; color: white; cursor: pointer; transition: 0.3s;
+    }
+    .btn:hover {
+      background: #ff4da6;
+    }
+    .hidden {
+      display: none;
+    }
+    #countdown {
+      font-size: 3em;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .cake {
+      margin: 30px auto;
+    }
+    .candle {
+      width: 10px; height: 30px; background: yellow;
+      margin: 0 10px; display: inline-block;
+      cursor: pointer; box-shadow: 0 0 20px orange;
+      border-radius: 5px;
+    }
+    .gift-container {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 20px; margin-top: 30px;
+    }
+    .gift {
+      width: 100px; height: 100px;
+      background: #ff69b4; border-radius: 15px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2em; cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .gift:hover {
+      transform: scale(1.1);
+    }
+    .quote, .love-section, .extra-surprise {
+      display: none;
+      font-size: 1em;
+      margin-top: 10px;
+      color: yellow;
+    }
+    .section-heading {
+      font-size: 1.5em;
+      margin-top: 30px;
+      color: #fff;
+      text-shadow: 0 0 5px #ff0080;
+    }
+    .photo-container {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 20px; margin-top: 20px;
+    }
+    .photo-box {
+      width: 150px; height: 150px;
+      margin: 10px; border-radius: 15px;
+      overflow: hidden; cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .photo-box:hover {
+      transform: scale(1.1);
+    }
+    .photo-box img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .surprise-box {
+      margin-top: 40px;
+      padding: 20px;
+      background: #ff4da6;
+      border-radius: 15px;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    .final-message {
+      background: #ff69b4;
+      padding: 20px;
+      margin-top: 30px;
+      font-size: 1.5em;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .final-message:hover {
+      background: #ff4da6;
+    }
+  </style>
+</head>
+<body>
+  <div id="page1">
+    <div class="glow-text">Oii unaku onu solava💌</div>
+    <input id="password" class="input-box" type="password" placeholder="Enter code" />
+    <div style="margin: 10px;">Hint:one special day  🥳</div>
+    <button class="btn" onclick="if (['August 24', 'November 16', 'April 19'].includes(document.getElementById('password').value)) {document.getElementById('page1').classList.add('hidden');document.getElementById('page2').classList.remove('hidden');} else {document.getElementById('error').textContent = 'Wrong password, please try again.';}">Unlock Surprise</button>
+    <div id="error" style="margin-top:10px; color: yellow;"></div>
+  </div>
+
+  <div id="page2" class="hidden">
+    <div class="glow-text">Kandu pudustiya Ama unoda porantha naal tha Many more Happiest bday to you my wifeyyy, I Love You So much 💘</div>
+    <div class="glow-text">Stay Happie with Me 🎂</div>
+    <button class="btn" onclick="document.getElementById('page2').classList.add('hidden');document.getElementById('page3').classList.remove('hidden');let count = 3;let countdownElement = document.getElementById('countdown');let interval = setInterval(function() {countdownElement.textContent = count; count--; if (count < 0) {clearInterval(interval);document.getElementById('page3').classList.add('hidden');document.getElementById('page4').classList.remove('hidden');}}, 1000);">Click to Open Your Surprise 🎁</button>
+  </div>
+
+  <div id="page3" class="hidden">
+    <div class="glow-text">wait panu...</div>
+    <div id="countdown">3</div>
+  </div>
+
+  <div id="page4" class="hidden">
+    <div class="glow-text">Candle Thodu 🎂</div>
+    <div class="cake">
+      <div class="candle" onclick="blowCandle(this)"></div>
+      <div class="candle" onclick="blowCandle(this)"></div>
+      <div class="candle" onclick="blowCandle(this)"></div>
+    </div>
+    <div id="afterCandles" class="hidden">
+      <div class="glow-text">Happiee 21 🎉 Move to the New Journey 💖</div>
+      <div class="gift-container">
+        <div class="gift" onclick="document.getElementById('quotes').children[0].style.display = 'block';">🎁</div>
+        <div class="gift" onclick="document.getElementById('quotes').children[1].style.display = 'block';">🎁</div>
+        <div class="gift" onclick="document.getElementById('quotes').children[2].style.display = 'block';">🎁</div>
+        <div class="gift" onclick="document.getElementById('quotes').children[3].style.display = 'block';">🎁</div>
+        <div class="gift" onclick="document.getElementById('quotes').children[4].style.display = 'block';">🎁</div>
+        <div class="gift" onclick="document.getElementById('quotes').children[5].style.display = 'block';">🎁</div>
+      </div>
+      <div id="quotes">
+        <div class="quote">“un siripula enaku elam poidum avlo alaga irukum.” 🥰</div>
+        <div class="quote">“un kooda iruntha ela neramu naa sanosam irunthen.” ✨</div>
+        <div class="quote">“Nee ilama naa ila enaku elam eh nee tha ” ❤️</div>
+        <div class="quote">“Every day with you is a blessing.” 🌹</div>
+        <div class="quote">“You're my today and all of my tomorrows.” 💑</div>
+        <div class="quote">“Falling for you more and more, every day.” 💕</div>
+      </div>
+      <div class="surprise-box" onclick="showImages()">Bday girl 📸</div>
+      <div id="photoSection" class="photo-container hidden">
+        <div class="photo-box"><img src="E:\love project\images\image1.jpg" alt="Photo 1"></div>
+        <div class="photo-box"><img src="E:\love project\images\image2.jpg" alt="Photo 2"></div>
+        <div class="photo-box"><img src="E:\love project\images\image3.jpg" alt="Photo 3"></div>
+        <div class="photo-box"><img src="E:\love project\images\image4.jpg"alt="Photo 4"></div>
+        <div class="photo-box"><img src="E:\love project\images\image5.jpg"alt="Photo 5"></div>
+        <div class="photo-box"><img src="E:\love project\images\image7.jpg" alt="Photo 6"></div>
+        <div class="photo-box"><img src="E:\love project\images\image8.jpg" alt="Photo 7"></div>
+        <div class="photo-box"><img src="E:\love project\images\image9.jpg" alt="Photo 8"></div>
+        <div class="photo-box"><img src="E:\love project\images\image6.jpg" alt="Photo 9"></div>
+        <div class="photo-box"><img src="E:\love project\images\image10.jpg" alt="Photo 10"></div>
+      </div>
+      <!-- Last small box with personalized message -->
+      <div class="final-message" onclick="finalMessage()">want to say 1 thing 🎉</div>
+      <div id="finalMessageSection" class="hidden">
+        <div class="glow-text" style="font-size: 1.5em; color: white;">
+          "In this birthday and many more, I will always be with you. Whatever happens, we'll face everything together."
+        ,ipovum sari epovum sari entha situation vanthalu naa unkooda irupen and unoda ups and wons la naa irupen unaku oru nalla suporter ah motivator ah 
+      nalla husband ah nalla friend ah nalla lover ah nalla bestie ah elam eh naa rupen unoda appa mari pathuka mudiyumma thrila but nalla pathupen
+    kasta paduthama ena nambi vantha ponna naa vitra matten ithey mari epovu santhosama en kooda irukanum naa una alugama pathukuve </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function blowCandle(candle) {
+      candle.style.background = 'gray';  // Make the candle gray after blowing it out
+      candle.style.boxShadow = 'none';  // Remove glow effect after blowing it out
+
+      // Check if all candles are blown out
+      if (document.querySelectorAll('.candle[style*="background: gray"]').length === 3) {
+        document.getElementById('afterCandles').classList.remove('hidden');  // Reveal the next section
+      }
+    }
+
+    function showImages() {
+      document.getElementById('photoSection').classList.remove('hidden');  // Show all 10 images
+    }
+
+    function finalMessage() {
+      document.getElementById('finalMessageSection').classList.remove('hidden');  // Show the final message
+    }
+  </script>
+</body>
+</html>
