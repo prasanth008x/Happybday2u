@@ -3,96 +3,165 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jesi's Birthday Surprise</title>
+  <title>Jesi's Birthday </title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
       color: white;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       min-height: 100vh;
-      padding: 20px;
       overflow-x: hidden;
+      padding: 0 20px;
+      position: relative;
+      text-align: center;
     }
+    .container {
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 0, 128, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+
     .glow-text {
-      font-size: 2em;
-      text-shadow: 0 0 10px #ff0080, 0 0 20px #ff0080;
+      font-size: 2.5em;
+      text-shadow: 0 0 10px #ff0080, 0 0 20px #ff0080, 0 0 30px #ff00ff, 0 0 40px #ff4da6;
       margin-bottom: 20px;
+      color: white;
     }
+
     .input-box, .btn {
-      padding: 10px; font-size: 1em; border-radius: 10px; border: none;
+      padding: 12px 20px;
+      font-size: 1.1em;
+      border-radius: 10px;
+      border: none;
     }
+
     .input-box {
       margin-bottom: 10px;
+      width: 80%;
+      max-width: 300px;
+      margin-top: 20px;
     }
+
     .btn {
-      background: #ff0080; color: white; cursor: pointer; transition: 0.3s;
+      background: #ff0080;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 80%;
+      max-width: 300px;
     }
+
     .btn:hover {
       background: #ff4da6;
     }
+
     .hidden {
       display: none;
     }
-    #countdown {
-      font-size: 3em;
+
+    #countdown, #clockCountdown {
+      font-size: 2em;
       font-weight: bold;
       margin-top: 20px;
     }
+
     .cake {
       margin: 30px auto;
     }
+
     .candle {
-      width: 10px; height: 30px; background: yellow;
-      margin: 0 10px; display: inline-block;
-      cursor: pointer; box-shadow: 0 0 20px orange;
-      border-radius: 5px;
+      width: 15px;
+      height: 40px;
+      background: yellow;
+      margin: 0 15px;
+      display: inline-block;
+      cursor: pointer;
+      box-shadow: 0 0 20px orange;
+      border-radius: 10px;
     }
+
     .gift-container {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 20px; margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
     }
+
     .gift {
-      width: 100px; height: 100px;
-      background: #ff69b4; border-radius: 15px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2em; cursor: pointer;
+      width: 100px;
+      height: 100px;
+      background: #ff69b4;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      cursor: pointer;
       transition: transform 0.3s;
     }
+
     .gift:hover {
       transform: scale(1.1);
     }
+
     .quote, .love-section, .extra-surprise {
       display: none;
       font-size: 1em;
       margin-top: 10px;
       color: yellow;
     }
+
     .section-heading {
       font-size: 1.5em;
       margin-top: 30px;
       color: #fff;
       text-shadow: 0 0 5px #ff0080;
     }
+
     .photo-container {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 20px; margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
     }
+
     .photo-box {
-      width: 150px; height: 150px;
-      margin: 10px; border-radius: 15px;
-      overflow: hidden; cursor: pointer;
+      width: 150px;
+      height: 150px;
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
       transition: transform 0.3s ease;
     }
+
     .photo-box:hover {
       transform: scale(1.1);
     }
+
     .photo-box img {
-      width: 100%; height: 100%; object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
+
     .surprise-box {
       margin-top: 40px;
       padding: 20px;
@@ -100,7 +169,10 @@
       border-radius: 15px;
       font-size: 1.2em;
       cursor: pointer;
+      color: white;
+      box-shadow: 0 0 10px #ff00ff;
     }
+
     .final-message {
       background: #ff69b4;
       padding: 20px;
@@ -110,41 +182,58 @@
       color: white;
       font-weight: bold;
       cursor: pointer;
+      box-shadow: 0 0 10px #ff00ff;
     }
+
     .final-message:hover {
       background: #ff4da6;
+    }
+
+    /* Glowing Borders */
+    .glow-border {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 5px solid #ff0080;
+      box-shadow: 0 0 20px #ff0080, 0 0 40px #ff0080;
+      z-index: 0;
+      border-radius: 20px;
     }
   </style>
 </head>
 <body>
-  <div id="page1">
+  <div class="glow-border"></div>
+
+  <div class="container" id="page1">
     <div class="glow-text">Oii unaku onu solava💌</div>
     <input id="password" class="input-box" type="password" placeholder="Enter code" />
-    <div style="margin: 10px;">Hint:one special day  🥳</div>
-    <button class="btn" onclick="if (['August 24', 'November 16', 'April 19'].includes(document.getElementById('password').value)) {document.getElementById('page1').classList.add('hidden');document.getElementById('page2').classList.remove('hidden');} else {document.getElementById('error').textContent = 'Wrong password, please try again.';}">Unlock Surprise</button>
+    <div style="margin: 10px;">Hint:one special day 🥳</div>
+    <button class="btn" onclick="unlockSurprise()">Unlock Surprise</button>
     <div id="error" style="margin-top:10px; color: yellow;"></div>
+    <div id="clockCountdown"></div>
   </div>
 
-  <div id="page2" class="hidden">
-    <div class="glow-text">Kandu pudustiya Ama unoda porantha naal tha Many more Happiest bday to you my wifeyyy, I Love You So much 💘</div>
-    <div class="glow-text">Stay Happie with Me 🎂</div>
-    <button class="btn" onclick="document.getElementById('page2').classList.add('hidden');document.getElementById('page3').classList.remove('hidden');let count = 3;let countdownElement = document.getElementById('countdown');let interval = setInterval(function() {countdownElement.textContent = count; count--; if (count < 0) {clearInterval(interval);document.getElementById('page3').classList.add('hidden');document.getElementById('page4').classList.remove('hidden');}}, 1000);">Click to Open Your Surprise 🎁</button>
+  <div class="container hidden" id="page2">
+    <div class="glow-text">Ama unoda porantha naal tha 💝</div>
+    <div class="glow-text">I Love You So much 💘</div>
+    <button class="btn" onclick="startCountdown()">Click to Open Your Surprise 🎁</button>
   </div>
 
-  <div id="page3" class="hidden">
+  <div class="container hidden" id="page3">
     <div class="glow-text">wait panu...</div>
     <div id="countdown">3</div>
   </div>
 
-  <div id="page4" class="hidden">
-    <div class="glow-text">Candle Thodu 🎂</div>
+  <div class="container hidden" id="page4">
+    <div class="glow-text">Candle off panu 🎂</div>
     <div class="cake">
       <div class="candle" onclick="blowCandle(this)"></div>
       <div class="candle" onclick="blowCandle(this)"></div>
       <div class="candle" onclick="blowCandle(this)"></div>
     </div>
+
     <div id="afterCandles" class="hidden">
-      <div class="glow-text">Happiee 21 🎉 Move to the New Journey 💖</div>
+      <div class="glow-text">Happiee 21 to my wife🎉 Move to the New Journey 💖</div>
       <div class="gift-container">
         <div class="gift" onclick="document.getElementById('quotes').children[0].style.display = 'block';">🎁</div>
         <div class="gift" onclick="document.getElementById('quotes').children[1].style.display = 'block';">🎁</div>
@@ -163,47 +252,85 @@
       </div>
       <div class="surprise-box" onclick="showImages()">Bday girl 📸</div>
       <div id="photoSection" class="photo-container hidden">
-        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image9.jpg?raw=true" alt="Photo 1"></div>
-        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image7.jpg?raw=true" alt="Photo 2"></div>
+        <!-- Replace with real image paths -->
+        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image1.jpg?raw=true" alt="Photo 1"></div>
+        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image10.jpg?raw=true" alt="Photo 2"></div>
+        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image2.jpg?raw=true" alt="Photo 3"></div>
+        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image3.jpg?raw=true" alt="Photo 3"></div>
+        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image5.jpg?raw=true" alt="Photo 3"></div>
+        
+        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image6.jpg?raw=true" alt="Photo 3"></div>
+        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image4.jpg?raw=true" alt="Photo 3"></div>
         <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image8.jpg?raw=true" alt="Photo 3"></div>
-        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image6.jpg?raw=true"alt="Photo 4"></div>
-        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image5.jpg?raw=true"alt="Photo 5"></div>
-        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image4.jpg?raw=true" alt="Photo 6"></div>
-        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image2.jpg?raw=true" alt="Photo 7"></div>
-        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image10.jpg?raw=true" alt="Photo 8"></div>
-        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image1.jpg?raw=true" alt="Photo 9"></div>
-        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image3.jpg?raw=true" alt="Photo 10"></div>
+        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image7.jpg?raw=true" alt="Photo 3"></div>
+        <div class="photo-box"><img src="https://github.com/prasanth008x/Happybday2u/blob/main/images/image9.jpg?raw=true" alt="Photo 3"></div>
       </div>
-      <!-- Last small box with personalized message -->
       <div class="final-message" onclick="finalMessage()">want to say 1 thing 🎉</div>
       <div id="finalMessageSection" class="hidden">
-        <div class="glow-text" style="font-size: 1.5em; color: white;">
-          "In this birthday and many more, I will always be with you. Whatever happens, we'll face everything together."
-        ,ipovum sari epovum sari entha situation vanthalu naa unkooda irupen and unoda ups and wons la naa irupen unaku oru nalla suporter ah motivator ah 
-      nalla husband ah nalla friend ah nalla lover ah nalla bestie ah elam eh naa rupen unoda appa mari pathuka mudiyumma thrila but nalla pathupen
-    kasta paduthama ena nambi vantha ponna naa vitra matten ithey mari epovu santhosama en kooda irukanum naa una alugama pathukuve </div>
+        <div class="glow-text" style="font-size: 1.2em;">
+          "In this birthday and many more, I will always be with you. We'll face everything together. I’ll be your biggest supporter, motivator, bestie, and life partner. Santhosama iru daa 💖"
+        </div>
       </div>
     </div>
   </div>
 
   <script>
-    function blowCandle(candle) {
-      candle.style.background = 'gray';  // Make the candle gray after blowing it out
-      candle.style.boxShadow = 'none';  // Remove glow effect after blowing it out
+    function unlockSurprise() {
+      const pwd = document.getElementById('password').value;
+      if (['August 24', 'November 16', 'April 19'].includes(pwd)) {
+        document.getElementById('page1').classList.add('hidden');
+        document.getElementById('page2').classList.remove('hidden');
+      } else {
+        document.getElementById('error').textContent = 'Wrong password, please try again.';
+      }
+    }
 
-      // Check if all candles are blown out
+    function startCountdown() {
+      document.getElementById('page2').classList.add('hidden');
+      document.getElementById('page3').classList.remove('hidden');
+      let count = 3;
+      let countdownElement = document.getElementById('countdown');
+      let interval = setInterval(() => {
+        countdownElement.textContent = count;
+        count--;
+        if (count < 0) {
+          clearInterval(interval);
+          document.getElementById('page3').classList.add('hidden');
+          document.getElementById('page4').classList.remove('hidden');
+        }
+      }, 1000);
+    }
+
+    function blowCandle(candle) {
+      candle.style.background = 'gray';
+      candle.style.boxShadow = 'none';
       if (document.querySelectorAll('.candle[style*="background: gray"]').length === 3) {
-        document.getElementById('afterCandles').classList.remove('hidden');  // Reveal the next section
+        document.getElementById('afterCandles').classList.remove('hidden');
       }
     }
 
     function showImages() {
-      document.getElementById('photoSection').classList.remove('hidden');  // Show all 10 images
+      document.getElementById('photoSection').classList.remove('hidden');
     }
 
     function finalMessage() {
-      document.getElementById('finalMessageSection').classList.remove('hidden');  // Show the final message
+      document.getElementById('finalMessageSection').classList.remove('hidden');
     }
+
+    // Live countdown till midnight
+    function updateClockCountdown() {
+      const now = new Date();
+      const midnight = new Date();
+      midnight.setHours(24, 0, 0, 0);
+      const diff = midnight - now;
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById('clockCountdown').textContent = `${hours}h ${minutes}m ${seconds}s remaining`;
+    }
+
+    setInterval(updateClockCountdown, 1000);
+    updateClockCountdown(); // Initialize the clock
   </script>
 </body>
 </html>
